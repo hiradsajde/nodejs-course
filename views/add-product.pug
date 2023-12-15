@@ -1,0 +1,6 @@
+extends layer 
+
+block content  
+    form(method="post" , action="/add-product")
+        input(name="title" , type="text" , placeholder="What's your product title?")
+        button(type="submit") Add Product
