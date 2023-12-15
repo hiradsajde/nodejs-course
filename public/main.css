@@ -42,3 +42,11 @@ button[type="submit"]{
     border: solid 1px #fff;
     transform: translateX(-50%) translateY(-50%);
 }
+
+.product-list { 
+    position : absolute ; 
+    top : 50% ; 
+    left : 50% ; 
+    transform : translateX(-50%) translateY(-50%) ; 
+    color : #fff;
+}

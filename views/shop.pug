@@ -1,13 +1,10 @@
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title products list
-    body 
-        main 
+extends layer  
+
+block content 
+    main 
+        div(class="product-list")
             h1 products 
             p list of all products  
-                ul 
+                ul
                     each product in products 
                         li #{product}
