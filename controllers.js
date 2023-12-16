@@ -8,18 +8,28 @@ module.exports.getAddProduct = (req , res) => {
 module.exports.postAddProduct = (req , res) => {
     product.create({
         title : req.body.title
+    }).then(result => {
+        res.redirect('/')
     })
-    res.redirect('/')
 }
 module.exports.getAllProducts = (req , res) => {
     product.findAll().then(result => {
-        res.render('shop' , {products : result.map(prod => prod.title)})
+        res.render('shop' , {products : result})
     })
 }
 
-module.exports.getProduct = (req , res , next) => {
+module.exports.getProduct = (req , res) => {
     product.findByPk(req.params.product).then(prod => {
         res.status(200).send(`<h1>${prod.title}</h1>`)
-        next()
+    })
+}
+
+module.exports.postDeleteProduct = (req , res) => {
+    product.destroy({
+        where : {
+            id : req.body.id
+        }
+    }).then(result => {
+        res.redirect('/')
     })
 }

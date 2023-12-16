@@ -7,4 +7,8 @@ block content
             p list of all products  
                 ul
                     each product in products 
-                        li #{product.title}
+                        li 
+                            div(style=`display:inline-block`) #{product.title}
+                            form(action='delete-product' , method='POST' , style=`display : inline-block;`)
+                                input(type="hidden" , name="id", value=product.id)
+                                input(type="submit" , value="(Delete)" , style=`background-color:transparent; color:#ffffff; border:none; text-decoration:underline`)
