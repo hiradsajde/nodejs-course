@@ -11,7 +11,7 @@ router.get('/add-product' , controllers.getAddProduct)
 
 router.post('/add-product' , controllers.postAddProduct)
 
-router.use('/:product' , controllers.getProduct)
+router.use('/product/:product' , controllers.getProduct)
 
 router.use((req , res , next) => {
     res.sendFile(path.join(mainDir , 'views' , '404.html'))

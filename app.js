@@ -2,10 +2,6 @@ const express = require('express')
 const http = require('http')
 const bodyParser = require('body-parser')
 const path = require('path')
-const db = require('./utils/database')
-
-db.execute("select * from products").then(products => console.log(products[0][0].title)).catch(err => console.log(err))
-
 const router = require('./router')
 
 const app = express()
