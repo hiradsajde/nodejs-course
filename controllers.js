@@ -14,3 +14,8 @@ module.exports.postAddProduct = (req , res) => {
 module.exports.getAllProducts = (req , res) => {
     res.render('shop' , {products : product.getProducts()})
 }
+
+module.exports.getProduct = (req , res) => {
+    res.send(`<h1>${product.getProduct((req.params.product - 1))}</h1>`)
+    next()
+}

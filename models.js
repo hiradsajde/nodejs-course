@@ -10,4 +10,7 @@ module.exports = class Products {
     getProducts(){
         return products
     }
+    getProduct(id){
+        return products[id]
+    }
 }
