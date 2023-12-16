@@ -1,9 +1,9 @@
 const express = require('express') 
 const path = require('path')
-
-const router = express.Router()
 const mainDir = require('./utils/path')
 const controllers = require('./controllers')
+
+const router = express.Router()
 
 router.get('/' , controllers.getAllProducts)
 
