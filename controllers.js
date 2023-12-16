@@ -1,28 +1,25 @@
-const productModel = require('./models')
+const product = require('./models')
 const path = require('path')
-
-const products = new productModel()
 
 module.exports.getAddProduct = (req , res) => {
     res.render('add-product')
 }
 
 module.exports.postAddProduct = (req , res) => {
-    products.addProduct(req.body.title).then((result => {
-        res.redirect('/')
-    }))
+    product.create({
+        title : req.body.title
+    })
+    res.redirect('/')
 }
 module.exports.getAllProducts = (req , res) => {
-    products.getProducts().then(productList => {
-        const prods = productList[0].map(prod => prod.title)
-        res.render('shop' , {products : prods})
+    product.findAll().then(result => {
+        res.render('shop' , {products : result.map(prod => prod.title)})
     })
 }
 
 module.exports.getProduct = (req , res , next) => {
-    products.getProduct(req.params.product).then(product => {
-        const prod = product[0][0].title
-        res.status(200).send(`<h1>${prod}</h1>`)
+    product.findByPk(req.params.product).then(prod => {
+        res.status(200).send(`<h1>${prod.title}</h1>`)
         next()
     })
 }

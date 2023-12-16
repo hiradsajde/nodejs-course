@@ -3,6 +3,7 @@ const http = require('http')
 const bodyParser = require('body-parser')
 const path = require('path')
 const router = require('./router')
+const sequalize = require('./utils/database')
 
 const app = express()
 
@@ -14,4 +15,7 @@ app.use(express.static(path.join(__dirname , 'public')))
 app.use(router)
 
 const server = http.createServer(app)
-server.listen(3000)
+
+sequalize.sync().then(result => {
+    server.listen(3000)
+}).catch(err => console.log(err))

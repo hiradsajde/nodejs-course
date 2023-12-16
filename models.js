@@ -1,17 +1,14 @@
-const db = require('./utils/database')
+const Sequelize = require('sequelize')
 
+const sequlize = require('./utils/database')
 
-module.exports = class Products {
-    constructor(){
-        
-    }
-    addProduct(title){
-        return db.execute(`INSERT INTO PRODUCTS (title) Values ('${title}')`)
-    }
-    getProduct(id){
-        return db.execute(`SELECT * FROM PRODUCTS WHERE id=${id}`)
-    }
-    async getProducts(){
-        return db.execute(`SELECT * FROM PRODUCTS`)
-    }
-}
+const Product = sequlize.define('product' , {
+    id : {
+        type : Sequelize.INTEGER, 
+        autoIncrement : true, 
+        allowNull : false,
+        primaryKey : true,
+    },
+    title : Sequelize.STRING
+})
+module.exports = Product
